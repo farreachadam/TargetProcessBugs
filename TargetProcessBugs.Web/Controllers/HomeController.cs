@@ -13,6 +13,7 @@ using TargetProcessBugs.Web.Models;
 using TargetProcessBugs.Core.MVC.Alerts;
 using RestSharp.Authenticators;
 using TargetProcessBugs.Core;
+using TargetProcessBugs.Web.Services;
 
 namespace TargetProcessBugs.Web.Controllers
 {
@@ -23,6 +24,24 @@ namespace TargetProcessBugs.Web.Controllers
         {            
             return View();
         }
+
+        public ActionResult apiPoc()
+        {
+            // projects
+            // teams
+            // owner (logged in person)
+            // description
+
+            var service = new PocService();
+            var projects = service.GetProjects();
+            
+            var vm = new ApiPocViewModel();
+            vm.Projects = projects.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }).ToList();
+
+            return View(vm);
+        }
+
+        #region Login\Authentication
 
         [HttpGet]
         [AllowAnonymous]
@@ -60,8 +79,12 @@ namespace TargetProcessBugs.Web.Controllers
             // add authentication token
             var token = Util.Base64Encode($"{vm.Username}{vm.Password}{Config.AuthenticateSalt}");
             SessionVar.Set<string>(SessionKeys.AuthenticationToken, token);
+            SessionVar.Set<string>(SessionKeys.Username, vm.Username);
+            SessionVar.Set<string>(SessionKeys.Password, vm.Password);
             
             return RedirectToAction("Index");
         }
+
+        #endregion Login\Authentication
     }
 }

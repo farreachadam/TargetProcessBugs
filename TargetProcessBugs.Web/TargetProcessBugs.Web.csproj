@@ -132,8 +132,11 @@
     <Compile Include="Infrastructure\Config.cs" />
     <Compile Include="Infrastructure\Filters\AuthenticatedFilter.cs" />
     <Compile Include="Infrastructure\SessionKeys.cs" />
+    <Compile Include="Models\ApiPocViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\PocService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -172,6 +175,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\Home\apiPoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -188,6 +192,10 @@
     <ProjectReference Include="..\TargetProcessBugs.Core\TargetProcessBugs.Core.csproj">
       <Project>{8ea3a04b-56c7-4bd4-9f36-e1a62a28a842}</Project>
       <Name>TargetProcessBugs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TargetProcessBugs.Models\TargetProcessBugs.Models.csproj">
+      <Project>{02b1197a-d129-4ef7-b1e4-70deea32422b}</Project>
+      <Name>TargetProcessBugs.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

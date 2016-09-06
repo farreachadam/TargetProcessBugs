@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetProcessBugs.Web", "Ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetProcessBugs.Core", "TargetProcessBugs.Core\TargetProcessBugs.Core.csproj", "{8EA3A04B-56C7-4BD4-9F36-E1A62A28A842}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetProcessBugs.Models", "TargetProcessBugs.Models\TargetProcessBugs.Models.csproj", "{02B1197A-D129-4EF7-B1E4-70DEEA32422B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8EA3A04B-56C7-4BD4-9F36-E1A62A28A842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EA3A04B-56C7-4BD4-9F36-E1A62A28A842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EA3A04B-56C7-4BD4-9F36-E1A62A28A842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B1197A-D129-4EF7-B1E4-70DEEA32422B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B1197A-D129-4EF7-B1E4-70DEEA32422B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B1197A-D129-4EF7-B1E4-70DEEA32422B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B1197A-D129-4EF7-B1E4-70DEEA32422B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

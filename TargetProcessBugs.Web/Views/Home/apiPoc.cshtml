@@ -1,0 +1,15 @@
+﻿@model TargetProcessBugs.Web.Models.ApiPocViewModel
+
+@{
+    ViewBag.Title = "apiPoc";
+}
+
+<h2>Proof of Concepts: API</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4 coll-md-offset-4">
+        @Html.LabelFor(x=> x.SelectedProjectId, new { @class = "col-form-label" })
+        @Html.DropDownListFor(x => x.SelectedProjectId, Model.Projects, new { @class = "form-control" })
+    </div>
+</div>
