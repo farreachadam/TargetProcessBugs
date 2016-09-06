@@ -32,7 +32,7 @@ namespace TargetProcessBugs.Web.Controllers
             var vm = new LoginViewModel()
             {
                 Username = "adam@farreachinc.com",
-                Password = "Elizag11!"
+                Password = ""
             };
 
             return View(vm);
