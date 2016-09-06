@@ -1,0 +1,19 @@
+﻿@using TargetProcessBugs.Core.MVC.Alerts
+
+<script src="/Scripts/alert.min.js"></script>
+
+<div class="page-alert">
+    @if (TempData.GetAlerts().Any())
+    {
+        foreach (var alert in TempData.GetAlerts())
+        {
+            <div class="alert @alert.AlertClass alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                @Html.Raw(alert.Message)
+            </div>
+        }
+    }
+</div>
