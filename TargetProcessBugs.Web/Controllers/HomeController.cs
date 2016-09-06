@@ -76,12 +76,16 @@ namespace TargetProcessBugs.Web.Controllers
                 return RedirectToAction("Login").WithError("Couldn't authenticate you: " + response.StatusDescription);
             }
 
-            // add authentication token
-            var token = Util.Base64Encode($"{vm.Username}{vm.Password}{Config.AuthenticateSalt}");
-            SessionVar.Set<string>(SessionKeys.AuthenticationToken, token);
-            SessionVar.Set<string>(SessionKeys.Username, vm.Username);
-            SessionVar.Set<string>(SessionKeys.Password, vm.Password);
-            
+            // create authentication token
+            var token = Util.Base64Encode($"{vm.Username}|{vm.Password}|{Config.AuthenticateSalt}");
+
+            // add authorization cookie
+            var cookie = new System.Web.HttpCookie("targetProcessBugsAuthentication");
+            cookie.Value = token;
+            cookie.Expires = DateTime.Now.AddDays(14);
+            Response.Cookies.Add(cookie);
+
+                        
             return RedirectToAction("Index");
         }
 

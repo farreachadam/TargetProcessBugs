@@ -16,13 +16,12 @@ namespace TargetProcessBugs.Web.Services
         
         public List<Project> GetProjects()
         {
-            var client = new RestClient(Config.TargetProcessBaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(CurrentUsername, CurrentPassword);
+            var client = TargetProcessRestClient();
 
             // make a request to retrieve projects
             var request = new RestRequest("Projects");
             var response = client.Execute(request);
-            if (response.StatusCode != HttpStatusCode.OK) return null;
+            if (response.StatusCode != HttpStatusCode.OK) return new List<Project>();
 
             // parse the json
             dynamic data = JObject.Parse(response.Content);

@@ -20,7 +20,7 @@ namespace TargetProcessBugs.Core.MVC.Filters
             }
 
             // check if user is authenticated
-            if(!IsAuthenticated())
+            if(!IsAuthenticated(filterContext.RequestContext))
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
@@ -35,6 +35,6 @@ namespace TargetProcessBugs.Core.MVC.Filters
 
         }
 
-        public abstract bool IsAuthenticated();
+        public abstract bool IsAuthenticated(RequestContext requestContext);
     }
 }

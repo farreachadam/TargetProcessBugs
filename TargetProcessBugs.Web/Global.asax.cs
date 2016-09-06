@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TargetProcessBugs.Core;
+using TargetProcessBugs.Core.MVC;
+using TargetProcessBugs.Web.Infrastructure;
 
 namespace TargetProcessBugs.Web
 {
@@ -16,6 +19,12 @@ namespace TargetProcessBugs.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        public void Application_BeginRequest()
+        {
+            // check for cookie
+            
         }
     }
 }

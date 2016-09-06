@@ -1,7 +1,10 @@
-﻿using System;
+﻿using RestSharp;
+using RestSharp.Authenticators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TargetProcessBugs.Core;
 using TargetProcessBugs.Core.MVC;
 using TargetProcessBugs.Web.Infrastructure;
 
@@ -9,20 +12,25 @@ namespace TargetProcessBugs.Web.Services
 {
     public class BaseService
     {
-        public string CurrentUsername
+        public RestClient TargetProcessRestClient()
         {
-            get
-            {
-                return SessionVar.GetString(SessionKeys.Username);
-            }
+            var client = new RestClient(Config.TargetProcessBaseUrl);
+            client.Authenticator = TargetProcessAuthenticator();
+
+            return client;
         }
 
-        public string CurrentPassword
+        private IAuthenticator TargetProcessAuthenticator()
         {
-            get
+            var cookie = HttpContext.Current?.Request?.Cookies["targetProcessBugsAuthentication"];
+            if (cookie != null)
             {
-                return SessionVar.GetString(SessionKeys.Password);
+                var cookieToken = Util.Base64Decode(cookie.Value);
+                var data = cookieToken.Split('|');
+                return new HttpBasicAuthenticator(data[0], data[1]);
             }
+
+            throw new Exception("Not authorized");
         }
     }
 }

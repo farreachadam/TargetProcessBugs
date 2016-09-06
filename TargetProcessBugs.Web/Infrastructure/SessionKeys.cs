@@ -5,7 +5,7 @@
     /// </summary>
     public static class SessionKeys
     {
-        public static string AuthenticationToken = "AuthenticationToken";
+        //public static string AuthenticationToken = "AuthenticationToken";
         public static string Username = "Username";
         public static string Password = "Password";
     }
